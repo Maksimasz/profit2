@@ -17,7 +17,6 @@ class Db
         $user = $data['user'];
         $password =$data['password'];
         $this->dbh = new \PDO($dsn, $user, $password);
-
     }
 
     public function query($sql, $data = [], $class = null)
