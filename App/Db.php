@@ -9,10 +9,10 @@ class Db
 
     public  function  __construct()
     {
-        $config = require __DIR__ . '/../config.php';
-        $dsn = 'mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'] . '';
-        $user = $config['user'];
-        $password =$config['password'];
+        $config = new Config();
+        $dsn = 'mysql:host=' . $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'] . '';
+        $user = $config->data['db']['user'];
+        $password =$config->data['db']['password'];
         $this->dbh = new \PDO($dsn, $user, $password);
     }
 
