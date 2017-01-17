@@ -1,6 +1,6 @@
 <?php
 
 return[ 'host' => 'localhost',
-        'dbname' => 'dbname',
+        'dbname' => 'php2',
         'user' => 'root',
         'password' => ''];
