@@ -12,9 +12,10 @@ class Db
      */
     public  function  __construct()
     {
-        $dsn = 'mysql:host=localhost;dbname=php2';
-        $user = 'root';
-        $password = '';
+        $data = require __DIR__ . '/../config.php';
+        $dsn = 'mysql:host=' . $data['host'] . ';dbname=' . $data['dbname'] . '';
+        $user = $data['user'];
+        $password =$data['password'];
         $this->dbh = new \PDO($dsn, $user, $password);
 
     }
