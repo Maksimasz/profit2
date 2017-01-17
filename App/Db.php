@@ -7,9 +7,6 @@ class Db
 {
     protected  $dbh;
 
-    /**
-     * Db constructor.
-     */
     public  function  __construct()
     {
         $data = require __DIR__ . '/../config.php';
