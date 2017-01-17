@@ -33,4 +33,60 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $custom;
         return $db->query($sql, [], static::class);
     }
+
+    public function isNew()
+    {
+        return null === $this->id;
+    }
+
+    public function update()
+    {
+        if ($this->isNew()) {
+            return false;
+        }
+        $sets = [];
+        $data = [];
+        foreach ($this as $key => $value) {
+            $data[':' . $key] = $value;
+            if ('id' == $key) {
+                continue;
+            }
+            $sets[] = $key . '=:' . $key;
+        }
+        $db = new Db();
+        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(',', $sets) . ' WHERE id=:id';
+        return $db->execute($sql, $data);
+    }
+
+    public function insert()
+    {
+        if (!$this->isNew()) {
+            return false;
+        }
+        $keys = [];
+        $vals = [];
+        $data = [];
+        foreach ($this as $key => $value) {
+            if ('id' == $key) {
+                continue;
+            }
+            $data[':' . $key] = $value;
+            $keys[] = $key;
+            $vals[] = ':' . $key;
+        }
+        $db = new Db();
+        $sql = 'INSERT INTO ' . static::TABLE . '(' . implode(',', $keys) . ') VALUES (' . implode(',', $vals) . ')';
+        $res = $db->execute($sql, $data);
+        $this->id = $db->lastInsertId();
+        return $res;
+    }
+
+    public function save()
+    {
+        if ($this->isNew()) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+    }
 }
