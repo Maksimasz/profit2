@@ -28,7 +28,7 @@
                 <tr>
                     <td><?php echo $val->title;?></td>
                     <td><a class=" uk-button uk-button-primary uk-button-small"  href="/admin.php?edit=ed&id=<?php echo $val->id;?>">редактировать</a></td>
-                    <td><a class=" uk-button uk-button-danger uk-button-small"  href="/admin.php?edit=del&id=<?php echo $val->id;?>">удалить</a></td>
+                    <td><a class=" uk-button uk-button-danger uk-button-small"  href="/admin.php?del=<?php echo $val->id;?>">удалить</a></td>
             <?php endforeach;?>
                 </tr>
 

@@ -24,9 +24,12 @@
         <form method="post" action="Admin.php" class="uk-form">
             <fieldset>
                 <legend>Заголовок</legend>
-                <div class="uk-form-row"><input class="uk-form-width-large" type="text" placeholder="заголовок новости" name="title"></div>
+                <div class="uk-form-row"><input class="uk-form-width-large" type="text" value=" <?php echo $article->title;?>" placeholder="заголовок новости" name="title">
+
+                </div>
                 <legend>Текст новости</legend>
-                <div class="uk-form-row"><textarea data-uk-htmleditor name="text"></textarea></div>
+                <div class="uk-form-row"><textarea data-uk-htmleditor name="text"><?php echo $article->text;?></textarea></div>
+                <input type="hidden" name="id" value="<?php $article->id;?>">
             </fieldset>
 
             <button class="uk-align-right uk-button uk-button-success uk-margin-top" name="save" >Сохранить</button>
