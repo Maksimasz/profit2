@@ -89,4 +89,17 @@ abstract class Model
             $this->update();
         }
     }
+
+    public function delete($id)
+    {
+        $this->id = $id;
+        if ($this->isNew()) {
+            return false;
+        }
+        $data = [':id' => $this->id ];
+        $db = new Db();
+        $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id ' ;
+        $res = $db->execute($sql, $data);
+
+    }
 }
