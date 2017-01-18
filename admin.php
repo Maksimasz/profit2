@@ -20,7 +20,7 @@ if (!empty($_GET['edit']))
    if ($_GET['edit']== 'ed')
    {
        $view->article = App\Models\Article::findOneById($_GET['id']);
-      // var_dump($view->article);
+
    }
    echo  $view->render(__DIR__ . '/App/Template/Editor.php');
 }
