@@ -2,7 +2,8 @@
 
 require __DIR__ . '/autoload.php';
 
-$news = \App\Models\Article::findCustom(3);
-//var_dump($news);
+$view = new App\View();
 
-include __DIR__ . '/App/Template/News.php';
+$view->news  = \App\Models\Article::findCustom(3);
+
+echo $view->render( __DIR__ .'/App/Template/News.php');

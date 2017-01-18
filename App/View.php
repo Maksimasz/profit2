@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 18.01.2017
- * Time: 12:19
- */
+
 
 namespace App;
 
 
-class View implements \Countable
+class View
 {
     protected $data = [];
 
