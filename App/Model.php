@@ -6,6 +6,9 @@ abstract class Model
 {
     public $id;
 
+    /**
+     * @return int
+     */
     public static function countAll ()
     {
         $db = new Db();
@@ -13,6 +16,9 @@ abstract class Model
         return (int)$db->query($sql, [], static::class)[0]->num;
     }
 
+    /**
+     * @return array
+     */
     public static function findAll()
     {
         $db = new Db();
@@ -20,6 +26,10 @@ abstract class Model
         return $db->query($sql, [], static::class);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function findOneById($id)
     {
         $db = new Db();
@@ -27,6 +37,10 @@ abstract class Model
         return $db->query($sql, [':id' => $id], static::class)[0];
     }
 
+    /**
+     * @param $custom
+     * @return array
+     */
     public static function findCustom($custom)
     {
         $db = new Db();
@@ -34,11 +48,17 @@ abstract class Model
         return $db->query($sql, [], static::class);
     }
 
+    /**
+     * @return bool
+     */
     public function isNew()
     {
         return null === $this->id;
     }
 
+    /**
+     * @return bool
+     */
     public function update()
     {
         if ($this->isNew()) {
@@ -58,6 +78,9 @@ abstract class Model
         return $db->execute($sql, $data);
     }
 
+    /**
+     * @return bool
+     */
     public function insert()
     {
         if (!$this->isNew()) {
@@ -81,6 +104,9 @@ abstract class Model
         return $res;
     }
 
+    /**
+     *
+     */
     public function save()
     {
         if ($this->isNew()) {
@@ -90,6 +116,10 @@ abstract class Model
         }
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function delete($id)
     {
         $this->id = $id;
