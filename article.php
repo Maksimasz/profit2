@@ -2,7 +2,12 @@
 
 require __DIR__ . '/autoload.php';
 
-$article = \App\Models\Article::findOneById($_GET['id']);
+$view = new App\View();
+
+$view->article = \App\Models\Article::findOneById($_GET['id']);
+
+echo $view->render(  __DIR__ . '/App/Template/Article.php' );
+
 //var_dump($article);
 
-include __DIR__ . '/App/Template/Article.php';
+
