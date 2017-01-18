@@ -9,7 +9,7 @@
 namespace App;
 
 
-class View
+class View implements \Countable
 {
     protected $data = [];
 
