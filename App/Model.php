@@ -5,6 +5,7 @@ namespace App;
 abstract class Model
 {
     public $id;
+    public $author_id = false;
 
     /**
      * @return int
@@ -36,6 +37,7 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
         return $db->query($sql, [':id' => $id], static::class)[0];
     }
+
 
     /**
      * @param $custom
@@ -99,6 +101,7 @@ abstract class Model
         }
         $db = new Db();
         $sql = 'INSERT INTO ' . static::TABLE . '(' . implode(',', $keys) . ') VALUES (' . implode(',', $vals) . ')';
+
         $res = $db->execute($sql, $data);
         $this->id = $db->lastInsertId();
         return $res;

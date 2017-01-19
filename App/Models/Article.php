@@ -8,7 +8,7 @@ class Article extends Model
 
     public $title;
     public $text;
-    public $author = false;
+
 
     const TABLE = 'news';
 
@@ -29,10 +29,10 @@ class Article extends Model
     {
 
         $news = self::findOneById($id);
-        if ($news->author_id != 0)
+        if (0 != $news->author_id)
         {
-            $aut = new Author();
-            return $aut::findOneById($id);
+            $author = new Author();
+            return $author::findOneById($id);
         }
         else
         {

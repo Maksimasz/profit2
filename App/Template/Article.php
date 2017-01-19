@@ -13,6 +13,13 @@
         <div class="uk-block">
             <h3 class="uk-article-title"><?php echo $title;?></h3>
             <p><?php echo $article->text;?></p>
+
+            <?php if (false == $article->author_id):?>
+                <p class="uk-article-meta">Автор народ.</p>
+            <?php else:?>
+                <p class="uk-article-meta"><?php echo $article->author_id->firstname;?> <?php echo $article->author_id->lastname;?></p>
+            <?php endif;?>
+
             <a class="uk-align-right uk-button uk-button-success"  href="/index.php">назад</a>
         </div>
     </div>

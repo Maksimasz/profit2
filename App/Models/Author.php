@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Db;
 use App\Model;
 
 class Author extends Model
@@ -9,5 +10,7 @@ class Author extends Model
     public $lastname;
 
     const TABLE = 'authors';
+
+
 
 }

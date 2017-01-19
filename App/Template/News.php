@@ -12,7 +12,12 @@
         <?php foreach ($news as $val):?>
     <h3><a href="/article.php?id=<?php echo $val->id;?>" ><?php echo $val->title;?></a></h3>
     <p><?php echo $val->text;?></p>
-    <hr>
+            <?php if (false == $val->author_id):?>
+                <p class="uk-article-meta">Автор народ.</p>
+            <?php else:?>
+            <p class="uk-article-meta"><?php echo $val->author_id->firstname;?> <?php echo $val->author_id->lastname;?></p>
+            <?php endif;?>
+        <hr>
         <?php endforeach;?>
     </div>
 </div>

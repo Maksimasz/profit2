@@ -19,6 +19,7 @@ class Db
     public function query($sql, $data = [], $class = null)
     {
         $sth = $this->dbh->prepare($sql);
+
         $res = $sth->execute($data);
         if(false === $res)
         {

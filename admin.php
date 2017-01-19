@@ -3,13 +3,12 @@
 require __DIR__ . '/autoload.php';
 
 $view = new App\View();
+$article = new App\Models\Article();
 
 
 
 if (isset($_POST['save']))
 {
-   // var_dump($_POST);
-    $article = new App\Models\Article();
     $article ->title = $_POST['title'];
     $article ->text = $_POST ['text'];
     $article ->save();
@@ -19,9 +18,14 @@ if (!empty($_GET['edit']))
 {
    if ($_GET['edit']== 'ed')
    {
-       $view->article = App\Models\Article::findOneById($_GET['id']);
+       $article = $view->article = App\Models\Article::findOneById($_GET['id']);
+       if (!empty($article->author_id)) {
+           $article->author_id = $article->Author($article->author_id);
+       }
+
 
    }
+
    echo  $view->render(__DIR__ . '/App/Template/Editor.php');
 }
 elseif (!empty($_GET['del']))
