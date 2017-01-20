@@ -16,14 +16,15 @@ class Db
         $this->dbh = new \PDO($dsn, $user, $password);
     }
 
-    public function query($sql, $data = [], $class = null)
+    public function query($sql, $data=[], $class = null)
     {
         $sth = $this->dbh->prepare($sql);
 
         $res = $sth->execute($data);
+
         if(false === $res)
         {
-            die('Db error in ' . $sql);
+            die('Db error in : ' . $sql);
         }
         if(null === $class)
         {

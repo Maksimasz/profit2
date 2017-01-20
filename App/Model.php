@@ -5,7 +5,7 @@ namespace App;
 abstract class Model
 {
     public $id;
-    public $author_id = false;
+
 
     /**
      * @return int
@@ -51,6 +51,17 @@ abstract class Model
     }
 
     /**
+     * @param $data
+     * @return mixed
+     */
+    public static function findAuthor($data =[])
+    {
+        $db = new Db();
+        $sql = 'SELECT id FROM ' . static::TABLE . ' WHERE firstname = :firstname AND lastname = :lastname';
+        return $db->query($sql, $data, static::class)[0];
+    }
+
+     /**
      * @return bool
      */
     public function isNew()
@@ -92,7 +103,7 @@ abstract class Model
         $vals = [];
         $data = [];
         foreach ($this as $key => $value) {
-            if ('id' == $key) {
+            if ('id' == $key ) {
                 continue;
             }
             $data[':' . $key] = $value;
@@ -123,16 +134,31 @@ abstract class Model
      * @param $id
      * @return bool
      */
-    public function delete($id)
+    public static function delete($id)
     {
-        $this->id = $id;
-        if ($this->isNew()) {
-            return false;
-        }
-        $data = [':id' => $this->id ];
+        $data = [':id' => $id ];
         $db = new Db();
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id ' ;
         $res = $db->execute($sql, $data);
 
     }
+
+    public static function saveArticle($post)
+    {
+/*
+        static::title = $post['title'];
+        static::text = $post ['text'];
+
+        $author = new Author();
+        $author->firstname= $post['firstname'];
+        $author->lastname =  $post['lastname'];
+
+        $id = $author::findAuthor([':firstname'=>$author->firstname,':lastname'=>$author->lastname]);
+        var_dump($author::findAuthor([':firstname'=>$author->firstname,':lastname'=>$author->lastname]));
+        //   $article ->author_id = $post ['author_id'];
+        // $article ->save();
+*/
+    }
+
+
 }

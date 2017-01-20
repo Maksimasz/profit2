@@ -5,10 +5,9 @@ use App\Model;
 
 class Article extends Model
 {
-
     public $title;
     public $text;
-
+    public $author_id = false;
 
     const TABLE = 'news';
 
@@ -39,10 +38,6 @@ class Article extends Model
             return false;
         }
     }
-
-
-
-
 
 
 }
