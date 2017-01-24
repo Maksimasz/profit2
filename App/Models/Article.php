@@ -20,24 +20,7 @@ class Article extends Model
         $news = self::findAll();
     }
 
-    /**
-     * @param $id
-     * @return bool
-     */
-    public function Author($id)
-    {
 
-        $news = self::findOneById($id);
-        if (0 != $news->author_id)
-        {
-            $author = new Author();
-            return $author::findOneById($id);
-        }
-        else
-        {
-            return false;
-        }
-    }
 
 
 }

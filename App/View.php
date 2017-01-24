@@ -10,6 +10,10 @@ class View
 
     protected $data = [];
 
+    /**
+     * @param $template
+     * @return string
+     */
     public function render($template)
     {
         foreach ($this->data as $key => $value) {

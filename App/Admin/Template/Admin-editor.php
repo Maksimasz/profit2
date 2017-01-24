@@ -1,5 +1,5 @@
 
-        <form method="post" action="Admin.php" class="uk-form">
+        <form method="post" action="/App/Admin/save.php" class="uk-form">
             <fieldset>
                 <legend>Заголовок</legend>
                 <div class="uk-form-row">
@@ -16,6 +16,6 @@
 
             </fieldset>
 
-            <button class="uk-align-right uk-button uk-button-success uk-margin-top" name="save" >Сохранить</button>
+            <button class="uk-align-right uk-button uk-button-success uk-margin-top" name="save" value="save" >Сохранить</button>
             <a class="uk-align-right uk-button uk-button-danger uk-margin-top" href="/Admin.php" >Назад</a>
         </form>

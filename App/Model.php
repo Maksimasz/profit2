@@ -38,8 +38,7 @@ abstract class Model
         return $db->query($sql, [':id' => $id], static::class)[0];
     }
 
-
-    /**
+     /**
      * @param $custom
      * @return array
      */
@@ -58,7 +57,8 @@ abstract class Model
     {
         $db = new Db();
         $sql = 'SELECT id FROM ' . static::TABLE . ' WHERE firstname = :firstname AND lastname = :lastname';
-        return $db->query($sql, $data, static::class)[0];
+        $res = $db->query($sql, $data, static::class);
+        return $res;
     }
 
      /**
@@ -141,23 +141,6 @@ abstract class Model
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id ' ;
         $res = $db->execute($sql, $data);
 
-    }
-
-    public static function saveArticle($post)
-    {
-/*
-        static::title = $post['title'];
-        static::text = $post ['text'];
-
-        $author = new Author();
-        $author->firstname= $post['firstname'];
-        $author->lastname =  $post['lastname'];
-
-        $id = $author::findAuthor([':firstname'=>$author->firstname,':lastname'=>$author->lastname]);
-        var_dump($author::findAuthor([':firstname'=>$author->firstname,':lastname'=>$author->lastname]));
-        //   $article ->author_id = $post ['author_id'];
-        // $article ->save();
-*/
     }
 
 

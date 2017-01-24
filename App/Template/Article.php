@@ -11,7 +11,7 @@
 
     <div  class="uk-container-center uk-margin-large-left uk-margin-large-right">
         <div class="uk-block">
-            <h3 class="uk-article-title"><?php echo $title;?></h3>
+            <h3 class="uk-article-title"><?php echo $article->title;?></h3>
             <p><?php echo $article->text;?></p>
 
             <?php if (false == $article->author_id):?>
