@@ -4,7 +4,8 @@
 namespace App;
 
 
-class View
+
+class View implements \Countable
 {
     use Magic;
 
@@ -26,4 +27,12 @@ class View
         return $content;
     }
 
+    /**
+     * Count elements of an object
+     * @return int The custom count as an integer.
+     */
+    public function count()
+    {
+        return count($this->data);
+    }
 }
