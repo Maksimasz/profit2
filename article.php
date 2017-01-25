@@ -1,12 +1,13 @@
 <?php
 
 
-use App\Controllers\OneFull;
+use App\Controllers\News;
+
 
 require __DIR__ . '/autoload.php';
 
-$full = new OneFull($_GET['id']);
- echo $full->articleFull();
+$full = new News();
+ echo $full->articleFull($_GET['id']);
 
 
 

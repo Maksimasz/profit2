@@ -2,23 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Controller;
 use App\Models\Article;
-use App\Models\Author;
-use App\View;
 
-class News
+class News extends Controller
 {
 
-    protected $view;
-    protected $author;
-    protected $article;
 
-    public function __construct()
-    {
-        $this->view = new View();
-        $this->author = new Author();
-
-    }
 
     protected function authorString($news)
     {
@@ -43,5 +33,13 @@ class News
         $news = $this->view->news  = Article::findCustom($number);
         $news = $this->authorString($news);
         return $this->view->render( __DIR__ .'/../Template/News.php');
+    }
+
+    public function articleFull($id)
+    {
+        $this->id = $id;
+        $this->article = $this->view->article = Article::findOneById($this->id);
+        $this->article->author_id = $this->author->Author($this->article->author_id);
+        echo $this->view->render(__DIR__ . '/../Template/Article.php');
     }
 }
