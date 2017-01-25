@@ -40,6 +40,6 @@ class News extends Controller
         $this->id = $id;
         $this->article = $this->view->article = Article::findOneById($this->id);
         $this->article->author_id = $this->author->Author($this->article->author_id);
-        echo $this->view->render(__DIR__ . '/../Template/Article.php');
+        return $this->view->render(__DIR__ . '/../Template/Article.php');
     }
 }
