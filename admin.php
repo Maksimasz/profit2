@@ -1,13 +1,12 @@
 <?php
 
+use App\Admin\Controllers\Admin;
 use App\Models\Article;
 
 require __DIR__ . '/autoload.php';
 
-$view = new App\View();
+$content = new \App\Admin\Controllers\news();
 
-$news = $view->news = Article::findAll();
-$content = $view->render( __DIR__ . '/App/Admin/Template/Admin-main.php');
+$adminStart = new Admin($content->new());
+echo $adminStart->display();
 
-$view->content = $content;
-echo $view->render( __DIR__ . '/App/Admin/Template/Admin.php');

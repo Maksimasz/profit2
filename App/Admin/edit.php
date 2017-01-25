@@ -1,15 +1,10 @@
 <?php
-use App\Models\Article;
-use App\Models\Author;
-use App\View;
+use App\Admin\Controllers\Admin;
+use App\Admin\Controllers\Edit;
 
 require __DIR__ . '/../../autoload.php';
 
-$view = new View();
 
-$article = $view->article = Article::findOneById($_GET['id']);
-$view->author = Author::findOneById($article->author_id);
-$content = $view->render(__DIR__ . '/Template/Admin-reditor.php');
-
-$view->content = $content;
-echo $view->render( __DIR__ . '/Template/Admin.php');
+$content = new Edit($_GET['id']);
+$adminEdit = new Admin($content->redit());
+echo $adminEdit->display();
