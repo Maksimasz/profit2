@@ -28,17 +28,6 @@ abstract class Model
     }
 
     /**
-     * @param $id
-     * @return mixed
-     */
-    public static function findOneById($id)
-    {
-        $db = new Db();
-        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
-        return $db->query($sql, [':id' => $id], static::class)[0];
-    }
-
-     /**
      * @param $custom
      * @return array
      */
@@ -47,6 +36,17 @@ abstract class Model
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $custom;
         return $db->query($sql, [], static::class);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public static function findOneById($id)
+    {
+        $db = new Db();
+        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
+        return $db->query($sql, [':id' => $id], static::class);
     }
 
     /**
