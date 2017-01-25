@@ -1,17 +1,13 @@
 <?php
 
-use App\Models\Article;
-use App\Models\Author;
+
+use App\Controllers\OneFull;
 
 require __DIR__ . '/autoload.php';
 
-$view = new App\View();
-$author = new Author();
+$full = new OneFull($_GET['id']);
+ echo $full->articleFull();
 
-$article = $view->article = Article::findOneById($_GET['id']);
-$article->author_id = $author->Author($article->author_id);
-
-echo $view->render(  __DIR__ . '/App/Template/Article.php' );
 
 
 

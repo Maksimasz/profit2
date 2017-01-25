@@ -17,14 +17,14 @@ class News
     {
         $this->view = new View();
         $this->author = new Author();
-        $this->article = new Article();
+
     }
 
     protected function authorString($news)
     {
         foreach ($news as $key => $value)
         {
-            $news[$key]->author_id = $this->author->Author($value->author_id);
+            $news[$key]->author_id = $this->author->Author($value->author_id[0]);
         }
         return $news;
     }
