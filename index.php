@@ -4,9 +4,18 @@ use App\Controllers\News;
 
 require __DIR__ . '/autoload.php';
 
+$baseContrName = $_GET['c'] ?? 'News';
+$base  = '\\App\\Controllers\\' . $baseContrName;
 
-$start = new News();
+$start = new $base;
+$actionName = $_GET['a'] ?? 'All';
 
-//echo $start->custom(3);
+if ('custom' == $actionName)
+{
+    $start->number = $_GET['number'] ?? 3;
+}
 
-echo $start->default();
+echo $start->action($actionName);
+
+
+

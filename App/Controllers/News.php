@@ -7,7 +7,7 @@ use App\Models\Article;
 
 class News extends Controller
 {
-
+    public $number;
 
 
     protected function authorString($news)
@@ -19,7 +19,7 @@ class News extends Controller
         return $news;
     }
 
-    public function default()
+    public function actionAll()
     {
         $news = $this->view->news  = Article::findAll();
         $news = $this->authorString($news);
@@ -28,17 +28,16 @@ class News extends Controller
 
     }
 
-    public function custom($number)
+    public function actionCustom()
     {
-        $news = $this->view->news  = Article::findCustom($number);
+        $news = $this->view->news  = Article::findCustom($this->number);
         $news = $this->authorString($news);
         return $this->view->render( __DIR__ .'/../Template/News.php');
     }
 
-    public function articleFull($id)
+    public function actionArticle()
     {
-        $this->id = $id;
-        $this->article = $this->view->article = Article::findOneById($this->id);
+        $this->article = $this->view->article = Article::findOneById($_GET['id']);
         $this->article->author_id = $this->author->Author($this->article->author_id);
         return $this->view->render(__DIR__ . '/../Template/Article.php');
     }
