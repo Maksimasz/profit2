@@ -1,0 +1,12 @@
+AddDefaultCharset UTF-8
+
+Options -Indexes
+Options +FollowSymLinks
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^.*$ index.php [QSA,L]
+#RewriteRule ^([a-zA-Z0-9]+)$ admin.php?page=$1 [L,QSA]

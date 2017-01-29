@@ -50,7 +50,7 @@ class News extends Controller
      */
     public function actionArticle()
     {
-        $this->article = $this->view->article = Article::findOneById($_GET['id']);
+        $this->article = $this->view->article = Article::findOneById($this->number);
         $this->article->author_id = $this->author->Author($this->article->author_id);
         return $this->view->render(__DIR__ . '/../Template/Article.php');
     }

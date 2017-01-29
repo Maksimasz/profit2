@@ -20,7 +20,7 @@
                 <p class="uk-article-meta"><?php echo $article->author_id->author;?></p>
             <?php endif;?>
 
-            <a class="uk-align-right uk-button uk-button-success"  href="/index.php">назад</a>
+            <a class="uk-align-right uk-button uk-button-success"  href="/">назад</a>
         </div>
     </div>
 
