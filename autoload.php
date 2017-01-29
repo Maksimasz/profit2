@@ -1,8 +1,6 @@
 <?php
 
-/**
- * @param $className
- */
+
 
 function __autoload($className)
 {

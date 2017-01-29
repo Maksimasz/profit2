@@ -4,7 +4,7 @@
 <html lang="en" class="uk-height-1-1">
 <head>
     <meta charset="UTF-8">
-    <title>Админка</title>
+    <title>Админ панель</title>
     <link rel="stylesheet" type="text/css" href="/App/Template/css/uikit.css" />
     <link rel="stylesheet" type="text/css" href="/App/Template/css/codemirror.css" />
     <link rel="stylesheet" type="text/css" href="/App/Template/css/components/htmleditor.css" />

@@ -1,12 +1,13 @@
 <?php
 
-use App\Admin\Controllers\Admin;
-use App\Models\Article;
-
 require __DIR__ . '/autoload.php';
 
-$content = new \App\Admin\Controllers\news();
+$baseContrName = $_GET['c'] ?? 'News';
+$base  = '\\App\\Admin\\Controllers\\' . $baseContrName;
 
-$adminStart = new Admin($content->new());
-echo $adminStart->display();
+$start = new $base;
+$actionName = $_GET['m'] ?? 'Admin';
+
+
+echo $start->action($actionName);
 

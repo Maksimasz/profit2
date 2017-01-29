@@ -1,15 +1,14 @@
 
-        <form method="post" action="/App/Admin/save.php" class="uk-form">
+        <form method="post" action="/admin.php?c=news&m=save" class="uk-form">
             <fieldset>
                 <legend>Заголовок</legend>
                 <div class="uk-form-row">
-                    <input class="uk-form-width-large" type="text"  placeholder="заголовок новости" name="title">
+                    <input class="uk-form-width-large" type="text"  placeholder="Заголовок новости" name="title">
 
                 </div>
                 <legend>Автор</legend>
                 <div class="uk-form-row">
-                    Имя автора: <input class="uk-form" type="text"  placeholder="Имя автора" name="firstname">
-                    Фамилия автора: <input class="uk-form" type="text"  placeholder="Фамилия автора" name="lastname">
+                    <input class="uk-form-width-large" type="text"  placeholder="Автор новости" name="author">
                 </div>
                 <legend>Текст новости</legend>
                 <div class="uk-form-row"><textarea data-uk-htmleditor name="text"></textarea></div>

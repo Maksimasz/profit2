@@ -1,21 +1,19 @@
 
-<form method="post" action="/App/Admin/save.php" class="uk-form">
+<form method="post" action="/admin.php?c=news&m=save" class="uk-form">
     <fieldset>
         <legend>Заголовок</legend>
         <div class="uk-form-row">
-            <input class="uk-form-width-large" type="text" value=" <?php echo $article->title;?>" placeholder="заголовок новости" name="title">
+            <input class="uk-form-width-large" type="text" value=" <?php echo $news->title;?>" name="title">
 
         </div>
         <legend>Автор</legend>
         <div class="uk-form-row">
-
-
-            Имя автора: <input class="uk-form" type="text" value=" <?php echo $author->firstname;?>" placeholder="Имя автора" name="firstname">
-            Фамилия автора: <input class="uk-form" type="text" value=" <?php echo $author->lastname;?>" placeholder="Фамилия автора" name="lastname">
+            <input class="uk-form" type="text" value=" <?php echo $author->author;?>" name="author">
         </div>
         <legend>Текст новости</legend>
-        <div class="uk-form-row"><textarea data-uk-htmleditor name="text"><?php echo $article->text;?></textarea></div>
-        <input type="hidden" name="id" value="<?php echo $article->id;?>">
+        <div class="uk-form-row"><textarea data-uk-htmleditor name="text"><?php echo $news->text;?></textarea></div>
+        <input type="hidden" name="id" value="<?php echo $news->id;?>">
+        <input type="hidden" name="author_id" value="<?php echo $news->author_id;?>">
     </fieldset>
 
     <button class="uk-align-right uk-button uk-button-success uk-margin-top" name="save" value="save">Сохранить</button>

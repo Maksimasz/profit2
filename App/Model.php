@@ -56,8 +56,8 @@ abstract class Model
     public static function findAuthor($data =[])
     {
         $db = new Db();
-        $sql = 'SELECT id FROM ' . static::TABLE . ' WHERE firstname = :firstname AND lastname = :lastname';
-        $res = $db->query($sql, $data, static::class);
+        $sql = 'SELECT id FROM ' . static::TABLE . ' WHERE author = :author';
+        $res = $db->query($sql, $data, static::class)[0];
         return $res;
     }
 
