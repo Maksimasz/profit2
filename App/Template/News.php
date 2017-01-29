@@ -15,7 +15,7 @@
             <?php if (false == $val->author_id):?>
                 <p class="uk-article-meta">Автор народ.</p>
             <?php else:?>
-            <p class="uk-article-meta"><?php echo $val->author_id->firstname;?> <?php echo $val->author_id->lastname;?></p>
+            <p class="uk-article-meta"><?php echo $val->author_id->author;?></p>
             <?php endif;?>
         <hr>
         <?php endforeach;?>

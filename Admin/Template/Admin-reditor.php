@@ -1,5 +1,5 @@
 
-<form method="post" action="/App/Admin/save.php" class="uk-form">
+<form method="post" action="/Admin/save.php" class="uk-form">
     <fieldset>
         <legend>Заголовок</legend>
         <div class="uk-form-row">

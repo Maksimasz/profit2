@@ -20,6 +20,19 @@ class Article extends Model
         $news = self::findAll();
     }
 
+    public function News()
+    {
+       $news = self::findAll();
+       foreach ($news as $key => $val)
+        {
+            if (true == $val->author_id)
+            {
+                $news[$key]->author_id = Author::findOneById($val->author_id);
+            }
+         }
+         return $news;
+    }
+
 
 
 
