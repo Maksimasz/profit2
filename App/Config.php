@@ -9,6 +9,6 @@ class Config
 
     public function __construct()
     {
-        $this->data = require __DIR__ . '/../config.php';
+        $this->data = require __DIR__ . '/../DBconfig.php';
     }
 }
