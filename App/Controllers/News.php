@@ -10,31 +10,44 @@ class News extends Controller
     public $number;
 
 
+    /**
+     * @param $news
+     * @return mixed
+     */
     protected function authorString($news)
     {
         foreach ($news as $key => $value)
         {
-            $news[$key]->author_id = $this->author->Author($value->author_id[0]);
+            $news[$key]->author_id = $this->author->Author($value->author_id);
         }
         return $news;
     }
 
+    /**
+     * @return string
+     */
     public function actionAll()
     {
         $news = $this->view->news  = Article::findAll();
-        $news = $this->authorString($news);
+        $news = $this->view->author = $this->authorString($news);
         return $this->view->render( __DIR__ .'/../Template/News.php');
 
 
     }
 
+    /**
+     * @return string
+     */
     public function actionCustom()
     {
         $news = $this->view->news  = Article::findCustom($this->number);
-        $news = $this->authorString($news);
+        $news = $this->view->author = $this->authorString($news);
         return $this->view->render( __DIR__ .'/../Template/News.php');
     }
 
+    /**
+     * @return string
+     */
     public function actionArticle()
     {
         $this->article = $this->view->article = Article::findOneById($_GET['id']);

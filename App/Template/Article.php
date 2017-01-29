@@ -17,7 +17,7 @@
             <?php if (false == $article->author_id):?>
                 <p class="uk-article-meta">Автор народ.</p>
             <?php else:?>
-                <p class="uk-article-meta"><?php echo $article->author_id->firstname;?> <?php echo $article->author_id->lastname;?></p>
+                <p class="uk-article-meta"><?php echo $article->author_id->author;?></p>
             <?php endif;?>
 
             <a class="uk-align-right uk-button uk-button-success"  href="/index.php">назад</a>
