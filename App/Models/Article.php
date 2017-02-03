@@ -12,11 +12,19 @@ class Article extends Model
 
     const TABLE = 'news';
 
-     use Magic;
+    use Magic;
 
     public function __isset($name)
     {
-         return  $this->data[$name] = Author::findOneById($this->author_id);
+        if (empty($this->author_id))
+        {
+            return $this->data[$name] = '';
+        }
+        else
+        {
+            return  $this->data[$name] = Author::findOneById($this->author_id);
+        }
+
     }
 
      /**

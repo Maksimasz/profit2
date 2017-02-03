@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controller;
 use App\Models\Article;
-use App\Models\Author;
 
 
 class News extends Controller
