@@ -1,31 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 25.01.2017
- * Time: 16:16
- */
 
 namespace App;
 
 
-use App\Models\Author;
-
 abstract class Controller
 {
     protected $view;
-    protected $author;
-    protected $article;
-
-    public $id;
 
     public function __construct()
     {
-        $this->author = new Author();
-        $this->view = new View();
+       $this->view = new View();
     }
 
-    protected function assecc() :bool
+    protected function access() :bool
     {
         return true;
     }
@@ -33,13 +20,13 @@ abstract class Controller
     public function action($name)
     {
         $nameAction = 'action' . $name;
-        if ($this->assecc())
+        if ($this->access())
         {
            return $this->$nameAction();
         }
         else
         {
-            return 'Доступ закрыт';
+            die('Доступ закрыт');
         }
 
     }

@@ -49,18 +49,6 @@ abstract class Model
         return $db->query($sql, [':id' => $id], static::class)[0];
     }
 
-    /**
-     * @param $data
-     * @return mixed
-     */
-    public static function findAuthor($data =[])
-    {
-        $db = new Db();
-        $sql = 'SELECT id FROM ' . static::TABLE . ' WHERE author = :author';
-        $res = $db->query($sql, $data, static::class)[0];
-        return $res;
-    }
-
      /**
      * @return bool
      */

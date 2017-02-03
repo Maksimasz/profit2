@@ -4,32 +4,20 @@ namespace App\Controllers;
 
 use App\Controller;
 use App\Models\Article;
+use App\Models\Author;
+
 
 class News extends Controller
 {
     public $number;
 
 
-    /**
-     * @param $news
-     * @return mixed
-     */
-    protected function authorString($news)
-    {
-        foreach ($news as $key => $value)
-        {
-            $news[$key]->author_id = $this->author->Author($value->author_id);
-        }
-        return $news;
-    }
-
-    /**
+     /**
      * @return string
      */
     public function actionAll()
     {
         $news = $this->view->news  = Article::findAll();
-        $news = $this->view->author = $this->authorString($news);
         return $this->view->render( __DIR__ .'/../Template/News.php');
 
 
@@ -41,7 +29,6 @@ class News extends Controller
     public function actionCustom()
     {
         $news = $this->view->news  = Article::findCustom($this->number);
-        $news = $this->view->author = $this->authorString($news);
         return $this->view->render( __DIR__ .'/../Template/News.php');
     }
 
@@ -51,7 +38,6 @@ class News extends Controller
     public function actionArticle()
     {
         $this->article = $this->view->article = Article::findOneById($this->number);
-        $this->article->author_id = $this->author->Author($this->article->author_id);
         return $this->view->render(__DIR__ . '/../Template/Article.php');
     }
 }

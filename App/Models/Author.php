@@ -9,6 +9,8 @@ class Author extends Model
     const TABLE = 'authors';
 
 
+
+
     /**
      * @param $id
      * @return mixed

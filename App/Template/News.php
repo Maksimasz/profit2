@@ -10,12 +10,12 @@
 <div  class="uk-container-center uk-margin-large-left uk-margin-large-right">
     <div class="uk-block">
         <?php foreach ($news as $val):?>
-    <h3><a href="/News/Article/<?php echo $val->id;?>" ><?php echo $val->title;?></a></h3>
-    <p><?php echo $val->text;?></p>
-            <?php if (false == $val->author_id):?>
+            <h3><a href="/News/Article/<?php echo $val->id;?>" ><?php echo $val->title;?></a></h3>
+            <p><?php echo $val->text;?></p>
+            <?php if (empty($val->author)):?>
                 <p class="uk-article-meta">Автор народ.</p>
-            <?php else:?>
-            <p class="uk-article-meta"><?php echo $val->author_id->author;?></p>
+                <?php else:?>
+                <p class="uk-article-meta"><?php echo $val->author->author;?></p>
             <?php endif;?>
         <hr>
         <?php endforeach;?>
