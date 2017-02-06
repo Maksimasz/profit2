@@ -49,6 +49,13 @@ abstract class Model
         return $db->query($sql, [':id' => $id], static::class)[0];
     }
 
+    public static function findAuthor($author)
+    {
+        $db = new Db();
+        $sql = 'SELECT id FROM ' . static::TABLE . ' WHERE author=:author';
+        return $db->query($sql, [':author' => $author], static::class)[0];
+    }
+
      /**
      * @return bool
      */
@@ -68,15 +75,18 @@ abstract class Model
         $sets = [];
         $data = [];
         foreach ($this as $key => $value) {
+            if ('data' == $key ) {
+                continue;
+            }
             $data[':' . $key] = $value;
-            if ('id' == $key) {
+            if ('id' == $key ) {
                 continue;
             }
             $sets[] = $key . '=:' . $key;
         }
         $db = new Db();
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(',', $sets) . ' WHERE id=:id';
-        return $db->execute($sql, $data);
+       return $db->execute($sql, $data);
     }
 
     /**
@@ -91,7 +101,11 @@ abstract class Model
         $vals = [];
         $data = [];
         foreach ($this as $key => $value) {
-            if ('id' == $key ) {
+            if ('data' == $key ) {
+                continue;
+            }
+
+            if ('id' == $key  ) {
                 continue;
             }
             $data[':' . $key] = $value;

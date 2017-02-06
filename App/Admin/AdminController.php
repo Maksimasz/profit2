@@ -3,21 +3,15 @@
 namespace App\Admin;
 
 
- use App\Models\Article;
- use App\Models\Author;
  use App\View;
 
  abstract  class AdminController
 {
      protected $view;
-     protected $au;
-     protected $article;
 
      public function __construct()
      {
          $this->view = new View();
-         $this->au = new Author();
-         $this ->article = new Article();
      }
 
 

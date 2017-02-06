@@ -8,7 +8,11 @@
         </div>
         <legend>Автор</legend>
         <div class="uk-form-row">
-            <input class="uk-form" type="text" value=" <?php echo $author->author;?>" name="author">
+            <?php if (empty($news->author)):?>
+                <input class="uk-form" type="text" value="Автора нет" name="author">
+            <?php else:?>
+                <input class="uk-form" type="text" value=" <?php echo $news->author->author;?>" name="author">
+            <?php endif;?>
         </div>
         <legend>Текст новости</legend>
         <div class="uk-form-row"><textarea data-uk-htmleditor name="text"><?php echo $news->text;?></textarea></div>

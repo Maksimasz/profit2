@@ -4,24 +4,12 @@ namespace  App\Admin\Controllers;
 
 
 use App\Admin\AdminController;
+use App\Model;
 use App\Models\Article;
 use App\Models\Author;
 
-
-
 class  news extends AdminController
 {
-
-
-    protected function authorString($news)
-    {
-        foreach ($news as $key => $value)
-        {
-            $news[$key]->author_id = $this->author->Author($value->author_id);
-        }
-        return $news;
-    }
-
 
     public  function  actionAdmin()
     {
@@ -36,8 +24,7 @@ class  news extends AdminController
 
     public  function  actionEdit()
     {
-        $news = $this->view->news = Article::findOneById($_GET['id']);
-        $this->view->author =Author::findOneById($news->author_id );
+        $this->view->news = Article::findOneById($_GET['id']);
         return $this->view->render(__DIR__ . '/../Template/Admin-reditor.php');
     }
 
@@ -49,27 +36,32 @@ class  news extends AdminController
 
     public  function  actionSave()
     {
-        $this->article->title = trim($_POST['title']);
-        $this->article->text = trim($_POST['text']);
+        $article = new Article();
+
+        $article->title = trim( $_POST['title'] );
+        $article->text = trim( $_POST['text'] );
+
         if (!empty($_POST['id']))
         {
-            $this->article->id = (int)$_POST['id'];
+            $article->id = $_POST['id'];
         }
 
-        $author = Author::findAuthor([':author' => trim($_POST['author'])]);
-        if (!empty($author->id))
+        $author = Author::findAuthor(trim( $_POST['author']));
+        if (!empty($author))
         {
-            $this->article->author_id = $author->id;
+           $article->author_id = $author->id;
         }
         else
-            {
-                $this->au->author = trim($_POST['author']);
-                $this->au->save();
-                $this->article->author_id = $this->au->id;
-            }
+        {
+            $aut = new Author();
+            $aut->author = trim( $_POST['author']);
+            $aut ->save();
+            $article->author_id = $aut->id;
 
-         $this->article->save();
-         return $this->actionAdmin();
+        }
+
+        $article->save();
+        return $this->actionAdmin();
 
 
     }
